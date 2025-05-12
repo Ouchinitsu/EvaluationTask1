@@ -21,26 +21,27 @@ public class BookController {
 	@Autowired
 	private BookService bookService;
 
-	// 👉 主页面显示
+	//メインページへアクセス
 	@GetMapping
 	public String showBooks(Model model) {
 		List<Book> bookList = bookService.findAll();
-		System.out.println(bookList);
 		model.addAttribute("books", bookList);
-		return "book"; // 返回 main.html
+		return "book";
 	}
 
+	//idが対応する本の修正ページへ移動
 	@GetMapping("/edit/{janCd}")
 	public String showEditForm(@PathVariable String janCd, Model model) {
 		Book book = bookService.findById(janCd)
-				.orElseThrow(() -> new IllegalArgumentException("无效的 JAN_CD : " + janCd));
+				.orElseThrow(() -> new IllegalArgumentException("無効な JAN_CD : " + janCd));
 		model.addAttribute("book", book);
-		return "edit"; // 返回 edit-book.html
+		return "edit";
 	}
 
+	////idが対応する本の修正を保存する
 	@PostMapping("/update/{janCd}")
 	public String updateBook(@PathVariable String janCd, @ModelAttribute Book book) {
-		book.setJanCd(janCd); // 确保主键不变
+		book.setJanCd(janCd);
 		bookService.save(book);
 		return "redirect:/book";
 	}

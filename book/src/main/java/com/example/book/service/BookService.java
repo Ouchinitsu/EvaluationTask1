@@ -16,7 +16,7 @@ public class BookService {
 	@Autowired
 	private BookRepository bookRepository;
 
-	// 新增或更新
+	//新しい情報に更新
 	public Book save(Book book) {
 		if (bookRepository.existsById(book.getJanCd())) {
 			book.setUpdateDatetime(LocalDateTime.now());
@@ -24,18 +24,13 @@ public class BookService {
 		return bookRepository.save(book);
 	}
 
-	// 查询全部
+	//すべてを取得
 	public List<Book> findAll() {
 		return bookRepository.findAll();
 	}
 
-	// 根据 JAN_CD 查询
+	//JAN_CD で検索
 	public Optional<Book> findById(String janCd) {
 		return bookRepository.findById(janCd);
-	}
-
-	// 删除
-	public void deleteById(String janCd) {
-		bookRepository.deleteById(janCd);
 	}
 }
