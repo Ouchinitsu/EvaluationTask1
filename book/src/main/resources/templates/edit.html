@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>Edit Book</h2>
+
+	<form th:action="@{'/book/update/' + ${book.janCd}}" th:object="${book}" method="post">
+	    <label>JAN_CD (Primary Key)
+	        <input type="text" th:field="*{janCd}" readonly />
+	    </label>
+
+	    <label>ISBN_CD
+	        <input type="text" th:field="*{isbnCd}" />
+	    </label>
+
+	    <label>BOOK_NM
+	        <input type="text" th:field="*{bookNm}" />
+	    </label>
+
+	    <label>BOOK_KANA
+	        <input type="text" th:field="*{bookKana}" />
+	    </label>
+
+	    <label>PRICE
+	        <input type="number" th:field="*{price}" />
+	    </label>
+
+	    <label>ISSUE_DATE (yyyy-MM-dd)
+	        <input type="text" th:field="*{issueDate}" />
+	    </label>
+	    <input type="submit" value="Save Changes" />
+	</form>
+
+	<br>
+	<div style="text-align: center;">
+	    <a th:href="@{/book}">Back to Book List</a>
+	</div>
+
+</body>
+</html>

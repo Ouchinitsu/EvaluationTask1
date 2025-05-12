@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h2>BOO</h2>
+<table>
+    <thead>
+        <tr>
+            <th>JAN_CD</th>
+            <th>ISBN_CD</th>
+            <th>BOOK_NM</th>
+            <th>BOOK_KANA</th>
+            <th>PRICE</th>
+            <th>ISSUE_DATE</th>
+            <th>CREATE_DATETIME</th>
+            <th>UPDATE_DATETIME</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="book : ${books}">
+            <td th:text="${book.janCd}">JAN_CD</td>
+            <td th:text="${book.isbnCd}">ISBN_CD</td>
+            <td th:text="${book.bookNm}">BOOK_NM</td>
+            <td th:text="${book.bookKana}">BOOK_KANA</td>
+            <td th:text="${book.price}">PRICE</td>
+            <td th:text="${book.issueDate}">ISSUE_DATE</td>
+            <td th:text="${book.createDatetime}">CREATE_DATETIME</td>
+            <td th:text="${book.updateDatetime}">UPDATE_DATETIME</td>
+            <td><a th:href="@{'/book/edit/' + ${book.janCd}}" class="button">Edit</a></td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>
